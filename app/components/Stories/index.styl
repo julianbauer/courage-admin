@@ -1,0 +1,22 @@
+@import 'variables'
+
+.story
+  display flex
+  color $highlightColor
+
+  &:nth-child(even)
+    color inherit
+    flex-direction row-reverse
+
+.story-content
+  width 50%
+  box-sizing border-box
+  padding 50px
+
+  h1
+    margin 50px 0
+
+.story-image
+  align-self stretch
+  width 50%
+  background-size cover

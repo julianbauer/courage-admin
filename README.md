@@ -1,1 +1,1 @@
-# courage-cms
+# Courage
