@@ -16,6 +16,16 @@ export class Stories extends React.Component {
 	}
 }
 
+export class CreateStory extends React.Component {
+	render() {
+		return (
+			<div id="newStory">
+				
+			</div>
+		)
+	}
+}
+
 export class Story extends React.Component {
 
 	static propTypes = {
