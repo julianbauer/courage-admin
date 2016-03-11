@@ -32,7 +32,7 @@ export default class updateStoryMutation extends Relay.Mutation {
       id: this.props.id,
       title: this.props.title,
       content: this.props.content,
-      imageUrl: this.props.imgUrl
+      imageUrl: this.props.imageUrl
     }
   }
 }
