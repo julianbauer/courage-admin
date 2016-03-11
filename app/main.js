@@ -11,7 +11,7 @@ import Stories from './components/Stories/index.jsx';
 import Kontakt from './components/Kontakt/index.jsx';
 
 
-const api = 'http://api.alpha.graph.cool:60000/graphql/cilkohu7e00063mi6s5sjtrqn'
+const api = 'https://api.alpha.graph.cool/graphql/cilkohu7e00063mi6s5sjtrqn'
 injectNetworkLayer(new DefaultNetworkLayer(api))
 
 export function saveToken (token: string): void {

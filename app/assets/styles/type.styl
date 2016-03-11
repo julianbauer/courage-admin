@@ -30,7 +30,7 @@
 @font-face {font-family: 'TTSouses';font-weight: bold;font-style: normal;src: url('../../assets/fonts/309254_0_0.eot');src: url('../../assets/fonts/309254_0_0.eot?#iefix') format('embedded-opentype'),url('../../assets/fonts/309254_0_0.woff2') format('woff2'),url('../../assets/fonts/309254_0_0.woff') format('woff'),url('../../assets/fonts/309254_0_0.ttf') format('truetype'),url('../../assets/fonts/309254_0_0.svg#wf') format('svg');}
 @font-face {font-family: 'TTSouses';font-weight: normal;font-style: normal;src: url('../../assets/fonts/309254_1_0.eot');src: url('../../assets/fonts/309254_1_0.eot?#iefix') format('embedded-opentype'),url('../../assets/fonts/309254_1_0.woff2') format('woff2'),url('../../assets/fonts/309254_1_0.woff') format('woff'),url('../../assets/fonts/309254_1_0.ttf') format('truetype'),url('../../assets/fonts/309254_1_0.svg#wf') format('svg');}
 
-html, body
+html, body, input, textarea, button
   font-family "TTSouses", Helvetica, Arial, sans-serif
   color $baseColor
 
@@ -41,3 +41,10 @@ p
 h1
   font-size 60px
   line-height 1.15
+
+input, textarea
+  padding 20px 25px 15px
+  box-sizing border-box
+  margin 0
+  outline 0
+  border 1px solid darken($lightGray, 10%)

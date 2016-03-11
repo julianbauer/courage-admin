@@ -9,6 +9,7 @@ export default class Html extends React.Component {
 		return (
 			<div>
 				<header id="header">
+					<div id="logo"></div>
 					<nav id="nav">
 						<Link to="/projekt" activeClassName="active" className="nav-link">Das Projekt</Link>
 						<Link to="/helfen" activeClassName="active" className="nav-link">Wie kann ich helfen?</Link>

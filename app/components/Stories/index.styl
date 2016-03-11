@@ -1,22 +1,148 @@
 @import 'variables'
+@import 'type'
+
+#stories
+  display flex
+  padding 12.5px 
+
+.story-container
+  width 50%
+  padding 12.5px
 
 .story
   display flex
-  color $highlightColor
+  background $white
+  transition box-shadow .1s linear, transform .1s linear
+  cursor pointer
+  height 30vw
 
-  &:nth-child(even)
-    color inherit
-    flex-direction row-reverse
+  &:hover
+    box-shadow 0 0 10px rgba(0,0,0,0.1)
+    transform scale(1.01)
 
 .story-content
   width 50%
   box-sizing border-box
-  padding 50px
+  padding 25px
 
   h1
-    margin 50px 0
+    margin 25px 0
+    font-size 30px
+
+  p
+    font-size 10px
 
 .story-image
   align-self stretch
   width 50%
   background-size cover
+  background-color darken($lightGray, 5%)
+
+// Story Popup
+
+#story-popup
+  position fixed
+  top 0
+  bottom 0
+  left 0
+  right 0
+  background rgba(0,0,0,0.8)
+  display flex
+  justify-content center
+  align-items center
+
+  .story-container
+    background $white
+    width 80vw
+    display flex
+    flex-direction column
+    padding 0
+
+  .story
+    width 100%
+    height 80vh
+    cursor default
+
+    &:hover
+      box-shadow none
+      transform none
+
+  .story-content
+    padding 50px
+    display flex
+    flex-direction column
+
+    input, textarea
+      width 100%
+      font-size 20px
+
+    input
+      line-height 1
+      flex-shrink 0
+
+      &.story-title-input
+        font-size 60px
+        font-weight bold
+        margin 0 0 25px
+
+    textarea
+      flex-grow 100
+      resize none
+
+.story-image-url-container
+  margin 25px 0 0
+  position relative
+  &:after
+    content ""
+    position absolute
+    top 50%
+    width 50px
+    right -@width
+    height 1px
+    background darken($lightGray, 10%)
+
+
+#close-popup
+  position absolute
+  top 25px
+  right @top
+  width 25px
+  height @width
+
+  &:before, &:after
+    content ""
+    position absolute
+    background $white
+    top 50%
+    left @top
+    width 100%
+    height 3px
+    transform translate(-50%, -50%) rotate(45deg)
+
+  &:after
+    transform translate(-50%, -50%) rotate(-45deg)
+
+.button-group
+  display flex
+  justify-content flex-end
+  padding 25px
+  box-sizing border-box
+  width 100%
+  border-top 1px solid darken($lightGray, 10%)
+
+.submit-button, .cancel-button
+  background $orange
+  padding 10px 10px 6px
+  outline none
+  border none
+  color white
+  font-size 20px
+  font-weight bold
+  width 150px
+  cursor pointer
+  margin-left 25px
+  border-radius 3px
+
+.cancel-button
+  background $lightGray
+  color $gray
