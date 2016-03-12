@@ -61,12 +61,12 @@
   transition background .1s ease, border-color .1s ease
 
   &:hover
-    background alpha($orange, 0.5)
-    border-color alpha($lightGray, 0)
+    // background alpha($orange, 0.5)
+    border-color alpha($orange, 0.5)
 
     .addStory
       &:before, &:after
-        background $lightGray
+        background $orange
 
 .addStory
   width 50px
@@ -183,7 +183,7 @@
   width 100%
   border-top 1px solid darken($lightGray, 10%)
 
-.submit-button, .cancel-button
+.submit-button, .cancel-button, .delete-button
   background $orange
   padding 10px 10px 6px
   outline none
@@ -203,3 +203,6 @@
 .cancel-button
   background $lightGray
   color $gray
+
+.delete-button
+  background red

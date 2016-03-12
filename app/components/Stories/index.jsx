@@ -3,6 +3,7 @@ import React, {PropTypes} from 'react';
 import Relay from 'react-relay';
 import UpdateStoryMutation from '../../mutations/UpdateStoryMutation.jsx';
 import CreateStoryMutation from '../../mutations/CreateStoryMutation.jsx';
+import DeleteStoryMutation from '../../mutations/DeleteStoryMutation.jsx';
 
 export class Stories extends React.Component {
 	render() {
@@ -10,7 +11,7 @@ export class Stories extends React.Component {
 			<div id="stories">
 				<NewStory viewerId={this.props.viewer.id}/>
         {this.props.viewer.allStorys.edges.map(({node}) => (
-						<Story key={node.id} story={node}/>
+						<Story key={node.id} viewer={this.props.viewer} story={node}/>
           )).reverse()
         }
 			</div>
@@ -66,7 +67,12 @@ export class NewStory extends React.Component {
 			 content: this.state.storyContent,
 			 imageUrl: this.state.storyImageUrl
      }))
-		 this.setState({popupToggled: false})
+		 this.setState({
+			 popupToggled: false,
+			 storyTitle: "",
+			 storyContent: "",
+			 storyImageUrl: ""
+		 })
 	}
 
 	render() {
@@ -107,6 +113,7 @@ export class Story extends React.Component {
 
 	static propTypes = {
 		story: PropTypes.object.isRequired,
+		viewer: PropTypes.object.isRequired,
 	};
 
 	constructor(props) {
@@ -154,6 +161,16 @@ export class Story extends React.Component {
 		 this.setState({popupToggled: false})
 	}
 
+	deleteStory() {
+		console.log(this.props.story);
+		console.log(this.props.viewer);
+		Relay.Store.commitUpdate(new DeleteStoryMutation({
+       story: this.props.story,
+			 viewer: this.props.viewer
+     }))
+		 this.setState({popupToggled: false})
+	}
+
 	render() {
 		const storyImageStyle = {
 			backgroundImage: 'url(' + this.state.storyImageUrl + ')'
@@ -182,6 +199,7 @@ export class Story extends React.Component {
 								<div className="story-image" style={storyImageStyle}></div>
 							</div>
 							<div className="button-group">
+								<button className="delete-button" onClick={this.deleteStory.bind(this)} >LÖSCHEN</button>
 								<button className="cancel-button" onClick={this.togglePopup.bind(this)} >ABBRECHEN</button>
 								<button className="submit-button" onClick={this.submitChanges.bind(this)} >BESTÄTIGEN</button>
 							</div>
@@ -204,10 +222,12 @@ export default Relay.createContainer(Stories, {
               title
               content
 							imageUrl
+							${DeleteStoryMutation.getFragment('story')}
             }
           }
         }
 				id
+				${DeleteStoryMutation.getFragment('viewer')}
       }
     `,
   },

@@ -36,4 +36,22 @@ export default class AddFieldMutation extends Relay.Mutation {
       imageUrl: this.props.imageUrl
     }
   }
+
+  getOptimisticResponse() {
+    return {
+      edge: {
+        node: {
+          id: this.props.id,
+          title: this.props.title,
+          content: this.props.content,
+          imageUrl: this.props.imageUrl
+        }
+      },
+      viewer: {
+        id: this.props.viewerId
+      }
+    }
+  }
+  static fragments = {
+  };
 }

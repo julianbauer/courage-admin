@@ -35,4 +35,16 @@ export default class updateStoryMutation extends Relay.Mutation {
       imageUrl: this.props.imageUrl
     }
   }
+
+  getOptimisticResponse() {
+    return {
+      story: {
+        title: this.props.title,
+        content: this.props.content,
+        imageUrl: this.props.imageUrl
+      }
+    }
+  }
+  static fragments = {
+  };
 }
